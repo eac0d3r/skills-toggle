@@ -1,7 +1,7 @@
 # skills-toggle
 
 [![npm version](https://img.shields.io/npm/v/skills-toggle)](https://www.npmjs.com/package/skills-toggle)
-[![license](https://img.shields.io/npm/l/skills-toggle)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![node](https://img.shields.io/node/v/skills-toggle)](https://nodejs.org)
 
 Interactively toggle AI coding assistant skill invocation modes — supports **GitHub Copilot**, **Claude Code**, **Pi**, and the **Agent Skills** open standard.
