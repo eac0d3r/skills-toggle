@@ -62,7 +62,7 @@ function render(rows: RowState[], focus: FocusTarget, columns: number): string {
         const changed = row.currentMode !== row.originalMode;
 
         const cursor = focused ? pc.cyan("❯") : " ";
-        const source = formatSource(row.skill.source);
+        const source = formatSource(row.skill.source, row.skill.scope);
         const name = row.skill.name.padEnd(nameWidth);
         const mode = formatMode(row.currentMode);
         const marker = changed ? pc.yellow(" ✎") : "";

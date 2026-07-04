@@ -16,6 +16,7 @@ export function getSkillDirectories(cwd: string, scope: SkillScope): SkillDirect
             { dir: path.join(cwd, ".agents", "skills"), source: "agents", scope: "local" },
             { dir: path.join(cwd, ".github", "skills"), source: "copilot", scope: "local" },
             { dir: path.join(cwd, ".claude", "skills"), source: "claude", scope: "local" },
+            { dir: path.join(cwd, ".pi", "skills"), source: "pi", scope: "local" },
         ];
     }
 
@@ -23,6 +24,7 @@ export function getSkillDirectories(cwd: string, scope: SkillScope): SkillDirect
         { dir: path.join(HOME, ".agents", "skills"), source: "agents", scope: "global" },
         { dir: path.join(HOME, ".copilot", "skills"), source: "copilot", scope: "global" },
         { dir: path.join(HOME, ".claude", "skills"), source: "claude", scope: "global" },
+        { dir: path.join(HOME, ".pi", "skills"), source: "pi", scope: "global" },
     ];
 }
 

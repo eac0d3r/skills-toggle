@@ -54,14 +54,23 @@ describe("scanSkills", () => {
         expect(skills[0].source).toBe("claude");
     });
 
+    it("finds skills in .pi/skills/", async () => {
+        await createSkillFixture(tmpDir, ".pi/skills", "pi-skill", "name: pi-skill\ndescription: test");
+
+        const skills = await scanSkills({ cwd: tmpDir, scope: "local" });
+        expect(skills).toHaveLength(1);
+        expect(skills[0].source).toBe("pi");
+    });
+
     it("finds skills across multiple directories", async () => {
         await createSkillFixture(tmpDir, ".agents/skills", "skill-a", "name: skill-a\ndescription: a");
         await createSkillFixture(tmpDir, ".github/skills", "skill-b", "name: skill-b\ndescription: b");
         await createSkillFixture(tmpDir, ".claude/skills", "skill-c", "name: skill-c\ndescription: c");
+        await createSkillFixture(tmpDir, ".pi/skills", "skill-d", "name: skill-d\ndescription: d");
 
         const skills = await scanSkills({ cwd: tmpDir, scope: "local" });
-        expect(skills).toHaveLength(3);
-        expect(skills.map((s) => s.name)).toEqual(["skill-a", "skill-b", "skill-c"]);
+        expect(skills).toHaveLength(4);
+        expect(skills.map((s) => s.name)).toEqual(["skill-a", "skill-b", "skill-c", "skill-d"]);
     });
 
     it("returns empty array when no skill directories exist", async () => {

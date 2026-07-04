@@ -1,11 +1,19 @@
 import pc from "picocolors";
-import type { InvocationMode, SkillEntry, SkillSource } from "../core/types.js";
+import type { InvocationMode, SkillEntry, SkillScope, SkillSource } from "../core/types.js";
 
-const SOURCE_LABELS: Record<SkillSource, string> = {
-    copilot: pc.blue("Copilot"),
-    claude: pc.yellow("Claude"),
-    agents: pc.green("Agents"),
+const SOURCE_COLORS: Record<SkillSource, (value: string) => string> = {
+    copilot: pc.blue,
+    claude: pc.yellow,
+    agents: pc.green,
+    pi: pc.magenta,
 };
+
+function sourcePath(source: SkillSource, scope: SkillScope): string {
+    if (source === "copilot") return scope === "global" ? ".copilot/skills" : ".github/skills";
+    if (source === "claude") return ".claude/skills";
+    if (source === "agents") return ".agents/skills";
+    return ".pi/skills";
+}
 
 const MODE_LABELS: Record<InvocationMode, string> = {
     full: pc.green("User & Model"),
@@ -21,8 +29,8 @@ const MODE_DESCRIPTIONS: Record<InvocationMode, string> = {
     disabled: "Inert — skill is completely deactivated (draft/temporary off)",
 };
 
-export function formatSource(source: SkillSource): string {
-    return `[${SOURCE_LABELS[source]}]`;
+export function formatSource(source: SkillSource, scope: SkillScope): string {
+    return `[${SOURCE_COLORS[source](sourcePath(source, scope))}]`;
 }
 
 export function formatMode(mode: InvocationMode): string {
@@ -30,7 +38,7 @@ export function formatMode(mode: InvocationMode): string {
 }
 
 export function formatSkillLabel(skill: SkillEntry): string {
-    const source = formatSource(skill.source);
+    const source = formatSource(skill.source, skill.scope);
     const mode = formatMode(skill.invocationMode);
     const desc = skill.description ? pc.dim(` — ${truncate(skill.description, 60)}`) : "";
     return `${source} ${pc.bold(skill.name)} ${pc.dim("(")}${mode}${pc.dim(")")}${desc}`;

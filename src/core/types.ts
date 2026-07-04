@@ -1,4 +1,4 @@
-export type SkillSource = "copilot" | "claude" | "agents";
+export type SkillSource = "copilot" | "claude" | "agents" | "pi";
 
 export type SkillScope = "local" | "global";
 

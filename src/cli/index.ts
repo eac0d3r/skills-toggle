@@ -19,8 +19,8 @@ function printHelp(): void {
         --version       Show version number
 
   Scope directories:
-    Local:   .agents/skills/  .github/skills/  .claude/skills/
-    Global:  ~/.agents/skills/ ~/.copilot/skills/ ~/.claude/skills/
+        Local:   .agents/skills/  .github/skills/   .claude/skills/  .pi/skills/
+        Global:  ~/.agents/skills/ ~/.copilot/skills/ ~/.claude/skills/ ~/.pi/skills/
 `);
 }
 

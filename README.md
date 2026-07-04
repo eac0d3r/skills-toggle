@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/npm/l/skills-toggle)](./LICENSE)
 [![node](https://img.shields.io/node/v/skills-toggle)](https://nodejs.org)
 
-Interactively toggle AI coding assistant skill invocation modes — supports **GitHub Copilot**, **Claude Code**, and the **Agent Skills** open standard.
+Interactively toggle AI coding assistant skill invocation modes — supports **GitHub Copilot**, **Claude Code**, **Pi**, and the **Agent Skills** open standard.
 
 ## Quick Start
 
@@ -14,7 +14,7 @@ npx skills-toggle
 
 ## What It Does
 
-AI coding skills (`.agents/skills/`, `.github/skills/`, `.claude/skills/`) use two YAML frontmatter flags to control who can invoke them:
+AI coding skills (`.agents/skills/`, `.github/skills/`, `.copilot/skills/`, `.claude/skills/`, `.pi/skills/`) use two YAML frontmatter flags to control who can invoke them:
 
 | `disable-model-invocation` | `user-invocable` | Who Can Invoke? | Mode |
 | :--- | :--- | :--- | :--- |
@@ -64,6 +64,7 @@ npx skills-toggle --cwd /path/to/project
 | `.agents/skills/` | Agent Skills standard |
 | `.github/skills/` | GitHub Copilot |
 | `.claude/skills/` | Claude Code |
+| `.pi/skills/` | Pi |
 
 ### Global (Personal) — `-g`, `--global`
 
@@ -72,6 +73,7 @@ npx skills-toggle --cwd /path/to/project
 | `~/.agents/skills/` | Agent Skills standard |
 | `~/.copilot/skills/` | GitHub Copilot |
 | `~/.claude/skills/` | Claude Code |
+| `~/.pi/skills/` | Pi |
 
 ## How It Works
 

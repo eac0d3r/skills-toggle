@@ -21,8 +21,8 @@ export async function run(options: CliOptions): Promise<void> {
     if (skills.length === 0) {
         p.log.info(
             options.scope === "global"
-                ? "No global skills found in ~/.agents/skills/, ~/.copilot/skills/, or ~/.claude/skills/"
-                : "No local skills found in .agents/skills/, .github/skills/, or .claude/skills/",
+                ? "No global skills found in ~/.agents/skills/, ~/.copilot/skills/, ~/.claude/skills/, or ~/.pi/skills/"
+                : "No local skills found in .agents/skills/, .github/skills/, .claude/skills/, or .pi/skills/",
         );
         p.outro("Nothing to do.");
         return;
