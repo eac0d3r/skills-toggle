@@ -44,13 +44,17 @@ export function getRenderedLineCount(output: string, columns: number): number {
         .reduce((lineCount, line) => lineCount + Math.max(1, Math.ceil(visibleLength(line) / safeColumns)), 0);
 }
 
+export function isCancelKey(key: string): boolean {
+    return key === "\x1b";
+}
+
 function render(rows: RowState[], focus: FocusTarget, columns: number): string {
     const lines: string[] = [];
 
     lines.push(
         pc.cyan("◆") +
         "  Toggle skill modes " +
-        pc.dim("(↑↓ navigate · space toggle · enter confirm)"),
+        pc.dim("(↑↓ navigate · space toggle · enter confirm · esc cancel)"),
     );
     lines.push(pc.dim("│"));
 
@@ -151,8 +155,8 @@ export function togglePrompt(skills: SkillEntry[]): Promise<SkillChange[] | null
         function onData(buf: Buffer): void {
             const key = buf.toString();
 
-            // Ctrl+C
-            if (key === "\x03") {
+            // Ctrl+C or Escape
+            if (key === "\x03" || isCancelKey(key)) {
                 cleanup();
                 clearRendered();
                 resolve(null);
