@@ -1,0 +1,15 @@
+import { defineConfig } from "tsup";
+
+export default defineConfig({
+    entry: ["src/cli/index.ts"],
+    format: ["esm"],
+    target: "node24",
+    outDir: "dist",
+    clean: true,
+    splitting: true,
+    sourcemap: true,
+    dts: false,
+    banner: {
+        js: "#!/usr/bin/env node",
+    },
+});

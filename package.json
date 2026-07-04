@@ -1,0 +1,55 @@
+{
+    "name": "skills-toggle",
+    "version": "0.1.0",
+    "description": "Interactively toggle AI coding assistant skill invocation modes (GitHub Copilot, Claude Code, Agent Skills)",
+    "type": "module",
+    "bin": {
+        "skills-toggle": "dist/index.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "lint": "eslint src/",
+        "format": "prettier --write .",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "prepublishOnly": "npm run build"
+    },
+    "engines": {
+        "node": ">=24"
+    },
+    "keywords": [
+        "skills",
+        "toggle",
+        "copilot",
+        "claude",
+        "agent-skills",
+        "cli",
+        "npx"
+    ],
+    "author": "",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@clack/prompts": "^1.7.0",
+        "gray-matter": "^4.0.3",
+        "picocolors": "^1.1.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@types/node": "^26.1.0",
+        "eslint": "^10.6.0",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.9.4",
+        "tsup": "^8.5.1",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.62.1",
+        "vitest": "^4.1.9"
+    }
+}
